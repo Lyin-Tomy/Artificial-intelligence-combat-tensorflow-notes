@@ -19,7 +19,7 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
               metrics=['sparse_categorical_accuracy'])
 
-checkpoint_save_path = "./checkpoint/mnist.ckpt"
+checkpoint_save_path = "./checkpoint/mnist.weights.h5"
 if os.path.exists(checkpoint_save_path + '.index'):
     print('-------------load the model-----------------')
     model.load_weights(checkpoint_save_path)
@@ -28,7 +28,7 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_save_path,
                                                  save_weights_only=True,
                                                  save_best_only=True)
 
-history = model.fit(x_train, y_train, batch_size=32, epochs=5, validation_data=(x_test, y_test), validation_freq=1,
+history = model.fit(x_train, y_train, batch_size=32, epochs=10, validation_data=(x_test, y_test), validation_freq=1,
                     callbacks=[cp_callback])
 model.summary()
 

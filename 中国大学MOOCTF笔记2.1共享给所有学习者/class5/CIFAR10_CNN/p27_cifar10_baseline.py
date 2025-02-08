@@ -46,7 +46,7 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
               metrics=['sparse_categorical_accuracy'])
 
-checkpoint_save_path = "./checkpoint/Baseline.ckpt"
+checkpoint_save_path = "./checkpoint/Baseline.weights.h5"
 if os.path.exists(checkpoint_save_path + '.index'):
     print('-------------load the model-----------------')
     model.load_weights(checkpoint_save_path)
